@@ -42,15 +42,50 @@ describe ('read file', () => {
         assert.equal(result, 'content');
 
     });
+     it('[unit test] shouldn"t get file content', function* () {
+        //given
+        const fs = {
+            readFile(fileName, encoding, callback) {
+                callback('error', null);
+            }
+        }
+        
+        const read = readFile({fs}); 
+        //when
+        try {
+            yield read('./symbolss.txt_invalid');
+            throw 'should fail on nonexistant file';
+        } catch (e){
+        //then
+            assert.equal(e, 'Cannot read file ./symbolss.txt_invalid');
+        }
+        
+
+    });
+    it('[unit test with mocking library] should"t get file content', function* () {
+        //given
+        const fs = td.object();
+        td.when(fs.readFile('./symbolss.txt_invalid', 'utf8')).thenCallback('error', null);
+        const read = readFile({fs}); 
+        //when
+        try {
+            yield read('./symbolss.txt_invalid');
+            throw 'should fail on nonexistant file';
+        } catch (e){
+        //then
+            assert.equal(e, 'Cannot read file ./symbolss.txt_invalid');
+        }
+
+    });
 
     it('[]integration test should fail on nonexistant file', function * () {
         const fs = require('fs');
         const read = readFile({fs});
         try {
-            yield read('./symbolsesesfahfsguafuigsfjasfgifiugiojsoghash.txt_invalid');
+            yield read('./symbolss.txt_invalid');
             throw 'should fail on nonexistant file';
         } catch (e){
-            assert.equal(e, 'Cannot read file ./symbolsesesfahfsguafuigsfjasfgifiugiojsoghash.txt_invalid');
+            assert.equal(e, 'Cannot read file ./symbolss.txt_invalid');
         }
         
     });
