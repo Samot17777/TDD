@@ -1,7 +1,6 @@
 'use strict';
 const fetchSymbols = require('../../lib/file/fetchSymbols');
 const assert = require('assert');
-const coMocha = require('co-mocha');
 
 describe ('fetchSymbols e2e', () => {
     it('should pass ? ',   function * () {
