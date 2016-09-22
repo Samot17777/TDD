@@ -2,8 +2,8 @@
 
 const stockfetch = require('../lib/stockfetch');
 const assert = require('assert');
-describe ('stockfetch e2e', () => {
-    it('happy path', function *() {
+describe('stockfetch e2e', () => {
+    it('happy path', function* () {
         //given
 
         let expectedAssertionCount = 0;
@@ -24,7 +24,7 @@ describe ('stockfetch e2e', () => {
             assert.deepEqual(symbolsAndPrices, [['A', 10], ['B', 20]]);
             return 'report';
         };
-        
+
 
         const fetch = stockfetch({ fetchSymbols, fetchPrices, prepareReport });
 

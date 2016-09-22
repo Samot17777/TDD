@@ -3,8 +3,8 @@ const parseSymbols = require('../../lib/file/parseSymbols');
 
 
 describe ('parse symbols', () => {
-    it('should return [GOOG, AAPL] when "GOOG\nAAPL"', function () {
-        const symbols  = parseSymbols('GOOG\nAAPL');
+    it('should return [GOOG, AAPL] when "GOOG\r\nAAPL"', function () {
+        const symbols  = parseSymbols('GOOG\r\nAAPL');
         assert.deepEqual(symbols, ['GOOG', 'AAPL']);
     });
     it('should return [] when empty', function () {
@@ -15,8 +15,8 @@ describe ('parse symbols', () => {
         const symbols  = parseSymbols('       ');
         assert.deepEqual(symbols, []);
     });
-    it('should return [GOOG, AAP] when "GOOG       \nAAPL\n\n"', function () {
-        const symbols  = parseSymbols('GOOG       \nAAPL\n\n');
+    it('should return [GOOG, AAP] when "GOOG       \r\nAAPL\r\n\n"', function () {
+        const symbols  = parseSymbols('GOOG       \r\nAAPL\r\n\n');
         assert.deepEqual(symbols, ["AAPL"]);
     });
 });
