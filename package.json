@@ -11,6 +11,7 @@
   "dependencies": {
     "data.either": "1.4.0",
     "good-guy-http": "1.7.3",
+    "lodash.partition": "4.6.0",
     "lodash.zip": "4.2.0"
   },
   "devDependencies": {
