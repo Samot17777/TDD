@@ -1,5 +1,5 @@
 const assert = require('assert');
-const prepareReport = require('../../lib/report/createReport');
+const createReport = require('../../lib/report/createReport');
 
 describe('prepare report', function () {
     it('should concatenate success and error results', function () {
@@ -18,7 +18,7 @@ describe('prepare report', function () {
             return 'error';
         };
 
-        const result = prepareReport({partitionResults, prepareSuccessReport, prepareErrorReport})('data');
+        const result = createReport({partitionResults, prepareSuccessReport, prepareErrorReport})('data');
 
         assert.equal(result, 'successerror');
     });
