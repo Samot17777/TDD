@@ -5,10 +5,10 @@ const coMocha = require('co-mocha');
 
 describe ('fetchSymbols e2e', () => {
 
-    if('should use biblioteka test double', function * () {
+    it('[mocking library] read file and parses symbols', function * () {
         //given
         const readFile = td.function('readFile');
-        td.when(readFile('someFile')).thenReturn(Promise.resolve('plik'));
+        td.when(readFile('plik')).thenReturn(Promise.resolve('A,B'));
 
         const parseSymbols = td.function('parseSymbols');
         td.when(parseSymbols('A,B')).thenReturn(['A', 'B']);

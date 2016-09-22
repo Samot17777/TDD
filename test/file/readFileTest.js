@@ -10,4 +10,15 @@ describe ('read file', () => {
 
         assert.equal(result, 'GOOG\r\nAAPL\r\nORCL\r\nMSFT\r\nINVALID');
     });
+
+    it('[]integration test should fail on nonexistant file', function * () {
+        const read = readFile();
+        try {
+            yield read('./symbolsesesfahfsguafuigsfjasfgifiugiojsoghash.txt_invalid');
+            throw 'should fail on nonexistant file';
+        } catch (e){
+            assert.equal(e, 'Cannot read file ./symbolsesesfahfsguafuigsfjasfgifiugiojsoghash.txt_invalid');
+        }
+        
+    });
 });
