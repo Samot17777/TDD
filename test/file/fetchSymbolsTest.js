@@ -1,9 +1,10 @@
 'use strict';
-const fetchSymbols = require('../lib/fetchSymbols');
+const fetchSymbols = require('../../lib/file/fetchSymbols');
 const assert = require('assert');
+const coMocha = require('co-mocha');
 
 describe ('fetchSymbols e2e', () => {
-    it('should pass ? ', (done) => {
+    it('should pass ? ',   function * () {
         //given
         let expectedAssertionCount = 0;
         
@@ -20,13 +21,11 @@ describe ('fetchSymbols e2e', () => {
 
         const fetch = fetchSymbols({ readFile, parseSymbols});
         //when 
-        const symbolPromise = fetch('plik');
+        const symbols = yield fetch('plik');
+
         //then
-        symbolPromise.then(symbols => {
-            assert.deepEqual(symbols, ['A', 'B']);
-            expectedAssertionCount++;
-            assert.equal(expectedAssertionCount, 3, 'expected number of assertions');
-            done();
-        }).catch(done);
+        assert.deepEqual(symbols, ['A', 'B']);
+        expectedAssertionCount++;
+        assert.equal(expectedAssertionCount, 3, 'expected number of assertions');
     });
 });
