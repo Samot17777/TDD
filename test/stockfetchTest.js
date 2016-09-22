@@ -24,8 +24,9 @@ describe ('stockfetch e2e', () => {
             assert.deepEqual(symbolsAndPrices, [['A', 10], ['B', 20]]);
             return 'report';
         };
+        
 
-        const fetch = stockfetch(fetchSymbols, fetchPrices, prepareReport);
+        const fetch = stockfetch({ fetchSymbols, fetchPrices, prepareReport });
 
         //when
         const reportPromise = fetch('someFile');
