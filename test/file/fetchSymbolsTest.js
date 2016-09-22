@@ -1,6 +1,7 @@
 const fetchSymbols = require('../../lib/file/fetchSymbols');
 const assert = require('assert');
 const td = require('testdouble');
+const coMocha = require('co-mocha');
 
 describe ('fetchSymbols e2e', () => {
 

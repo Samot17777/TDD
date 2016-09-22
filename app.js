@@ -8,7 +8,7 @@ event.on('data', function (dane) {
 });
 
 
-fs.readFile('./text.txt', 'utf-8', (err, data) => {
+fs.readFile('./symbols.txt', 'utf-8', (err, data) => {
   if (err) throw err;
   symbols = data.split('\r\n');
   symbols.forEach(function (el) {

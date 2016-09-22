@@ -1,7 +1,7 @@
 const fs = require('fs');
 const request = require('good-guy-http')();
 
-fs.readFile('./text.txt', 'utf8', (err, data) => {
+fs.readFile('./symbols.txt', 'utf8', (err, data) => {
     if (err) throw err;
     var symbols = data.split('\n');
 
